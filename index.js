@@ -11,13 +11,27 @@ const hbs = exphbs.create({
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
-app.set('views', 'hbs')
+app.set('views', 'views')
+
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'))
+  res.render('index', {
+    title: 'Home page',
+    isHome: true
+  })
 })
-app.get('/about', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views', 'about.html'))
+app.get('/courses', (req, res) => {
+  res.render('courses', {
+    title: 'Courses',
+    isCourses: true
+  })
+})
+app.get('/add', (req, res) => {
+  res.render('add', {
+    title: 'Add course',
+    isAdd: true
+  })
 })
 
 app.listen(PORT, () => {
