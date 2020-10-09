@@ -28,7 +28,9 @@ class Cart {
 
   async add(course) {
     const cart = await Cart.getCart()
-    cart.push(course)
+    const isExist = cart.findIndex((c) => c.id === course.id)
+    if (isExist === -1) {
+      cart.push(course)
 
     return new Promise((res, rej) => {
       fs.writeFile(path.join(__dirname, '..', 'data', 'cart.json'),
@@ -43,6 +45,7 @@ class Cart {
       )
     })
   }
+    }
 }
 
 module.exports = Cart

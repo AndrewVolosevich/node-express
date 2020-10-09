@@ -20,6 +20,7 @@ router.get('/', async(req, res) => {
 
   res.render('cart', {
     title: `There are ${cart.length} courses in the Cart`,
+    isCart: true,
     cart
   })
 })
