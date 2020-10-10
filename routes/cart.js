@@ -14,6 +14,12 @@ router.post('/add', async (req, res) => {
   res.redirect('/cart')
 })
 
+router.get('/delete', async (req, res) => {
+  const id = await req.params.id
+  console.log(req.params);
+  res.redirect('/cart')
+})
+
 router.get('/', async(req, res) => {
 
   const cart = await Cart.getCart()

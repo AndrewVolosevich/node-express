@@ -1,25 +1,23 @@
-<h1>Add new courses</h1>
+<h1>Добавить новый курс</h1>
 
 <form action="/add" method="POST">
-
   <div class="input-field">
-    <input id="title" name='title' type="text" class="validate" required>
-    <label for="title">Course name</label>
-    <span class="helper-text" data-error="Enter name" data-success="right"></span>
+    <input id="title" name="title" type="text" class="validate" required>
+    <label for="title">Название курса</label>
+    <span class="helper-text" data-error="Введите название"></span>
   </div>
 
   <div class="input-field">
-    <input id="price" name='price' type="number" class="validate" required min='1'>
-    <label for="price">Course price</label>
-    <span class="helper-text" data-error="Enter price" data-success="right"></span>
+    <input id="price" name="price" type="number" class="validate" required min="1">
+    <label for="price">Цена курса</label>
+    <span class="helper-text" data-error="Введите цену"></span>
   </div>
 
   <div class="input-field">
-    <input id="url" name='url' type="text" class="validate" required>
-    <label for="url">URL image</label>
-    <span class="helper-text" data-error="Enter image URL" data-success="right"></span>
+    <input id="img" name="img" type="text" class="validate" required>
+    <label for="img">URL картинки</label>
+    <span class="helper-text" data-error="Введите url картинки"></span>
   </div>
 
-  <button class="waves-effect waves-light btn" type='submit'>Add Course</button>
-
+  <button class="btn btn-primary">Добавить курс</button>
 </form>

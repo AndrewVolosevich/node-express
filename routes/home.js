@@ -3,9 +3,10 @@ const router = Router()
 
 router.get('/', (req, res) => {
   res.render('index', {
-    title: 'Home page',
+    title: 'Главная страница',
     isHome: true
   })
 })
+
 
 module.exports = router
