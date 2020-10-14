@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars')
 const homeRoutes = require('./routes/home')
 const cardRoutes = require('./routes/card')
 const addRoutes = require('./routes/add')
+const orderRoutes = require('./routes/orders')
 const coursesRoutes = require('./routes/courses')
 const mongoose = require('mongoose')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
@@ -12,11 +13,6 @@ const User = require('./models/user')
 
 
 const app = express()
-
-// const hbs = exphbs.create({
-//   defaultLayout: 'main',
-//   extname: 'hbs',hbs: allowInsecurePrototypeAccess(Handlebars)
-// })
 
 app.engine('hbs', exphbs({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
@@ -45,6 +41,7 @@ app.use('/', homeRoutes)
 app.use('/add', addRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/card', cardRoutes)
+app.use('/orders', orderRoutes)
 
 const PORT = process.env.PORT || 5000
 const mongoUrl = 'mongodb+srv://Mongo-express:THNJnBYm4TjGbf46@cluster0.wyzo2.mongodb.net/mongo-express?retryWrites=true&w=majority'

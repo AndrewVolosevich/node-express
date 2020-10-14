@@ -12,12 +12,15 @@ document.querySelectorAll('.price').forEach(node => {
 const $card = document.querySelector('#card')
 if ($card) {
   $card.addEventListener('click', event => {
+    console.log('click');
     if (event.target.classList.contains('js-remove')) {
       const id = event.target.dataset.id
-      
       fetch('/card/remove/' + id, {
         method: 'delete'
-      }).then(res => res.json())
+      })
+        .then(res => {
+          return res.json()
+        })
         .then(card => {
           if (card.courses.length) {
             const html = card.courses.map(c => {
@@ -38,6 +41,5 @@ if ($card) {
           }
         })
     }
-    
   })
-} 
+}
