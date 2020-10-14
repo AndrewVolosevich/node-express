@@ -43,3 +43,13 @@ if ($card) {
     }
   })
 }
+
+const tabs = document.querySelectorAll('.tabs')
+M.Tabs.init(tabs);
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, {
+    edge: 'right'
+  });
+});
