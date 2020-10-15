@@ -13,6 +13,7 @@ const coursesRoutes = require('./routes/courses')
 const mongoose = require('mongoose')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const varMiddleware = require('./middleware/variables')
+const userMiddleware = require('./middleware/user')
 
 
 const app = express()
@@ -41,6 +42,7 @@ app.use(session({
   store
 }))
 app.use(varMiddleware)
+app.use(userMiddleware)
 
 app.use('/', homeRoutes)
 app.use('/add', addRoutes)

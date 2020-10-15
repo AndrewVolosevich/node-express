@@ -6,9 +6,10 @@ const user = new Schema({
     type: String,
     required: true,
   },
-  name: {
+  name: String,
+  password: {
     type: String,
-    required: true,
+    required: true
   },
   cart: {
     items: [

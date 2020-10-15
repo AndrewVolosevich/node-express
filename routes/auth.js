@@ -15,21 +15,52 @@ router.get('/logout', async(req, res) => {
 })
 
 router.post('/login', async(req, res) => {
-  req.session.isAuth = true
-  const user = await User.findById('5f84c04c194f3c5cccaee080')
-  req.session.user = user
+  try {
+    const {email, password} = req.body
 
-  req.session.save((error) => {
-    if (error) {
-      console.log(error);
+    const candidate = await User.findOne({email})
+    if (candidate) {
+      const areSame = password === candidate.password
+
+      if (areSame) {
+        req.session.user = candidate
+        req.session.isAuth = true
+
+        req.session.save((error) => {
+          if (error) {
+            console.log(error);
+          }
+          res.redirect('/')
+        })
+      } else {
+        res.redirect('/auth#login')
+      }
+    } else {
+      res.redirect('/auth#login')
     }
-    res.redirect('/')
-  })
+
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 router.post('/register', async(req, res) => {
+  try {
+    const {email, password, confirm, name} = req.body
+    const candidate = await User.findOne({email})
 
-  router.redirect('/')
+    if (candidate) {
+      res.redirect('/auth#register')
+    } else {
+      const user = new User({
+        email, name, password, cart: {items: []}
+      })
+      await user.save()
+      res.redirect('/auth#login')
+    }
+  } catch (error) {
+    console.log(error);
+  }
 })
 
 
